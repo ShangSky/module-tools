@@ -2,6 +2,12 @@
 
 Tools for python modules
 
+## Installation
+
+```shell
+$ pip install flask-sugar
+```
+
 ## Examples
 
 ```python
