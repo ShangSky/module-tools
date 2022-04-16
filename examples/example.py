@@ -1,20 +1,3 @@
-# Module Tools
-
-Tools for python modules
-
-## Examples
-
-```python
-"""
-package
-    __init__.py
-    sub_package
-        __init__.py
-        modulec.py -> var5, var6 = 3, "c"
-    modulea.py -> var1, var2, add = 1, "a", lambda a, b: a + b
-    moduleb.py -> var3, var4 = 2, "b"
-"""
-
 from package.modulea import add
 
 from module_tools import find_module_strings, find_modules, import_string, iter_objs_from_modules
@@ -40,4 +23,3 @@ print(
     set(iter_objs_from_modules(["package"], cls=int, recursive=True, func=lambda x: x < 3))
     == {1, 2}
 )  # True
-```
