@@ -1,12 +1,12 @@
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 
 
 import pkgutil
 from importlib import import_module
 from types import ModuleType
-from typing import Any, Callable, Iterable, Optional, Type, TypeVar
+from typing import Any, Callable, Iterable, Optional, Tuple, Type, Union
 
-T = TypeVar("T")
+CLS = Union[Type, Tuple[Union[Type, Tuple[Any, ...]], ...]]
 
 
 def import_string(dotted_path: str) -> Any:
@@ -76,9 +76,9 @@ def find_modules(pkg_name: str, *, recursive: bool = False) -> Iterable[ModuleTy
 def iter_objs_from_module(
     module: ModuleType,
     *,
-    cls: Optional[Type[T]] = None,
+    cls: Optional[CLS] = None,
     func: Optional[Callable[[Any], bool]] = None,
-) -> Iterable[T]:
+) -> Iterable[Any]:
     """Get the objects from a package"""
     for attr_name in dir(module):
         if attr_name.startswith("__"):
@@ -94,10 +94,10 @@ def iter_objs_from_module(
 def iter_objs_from_modules(
     pkg_names: Iterable[str],
     *,
-    cls: Optional[Type[T]] = None,
+    cls: Optional[CLS] = None,
     recursive: bool = False,
     func: Optional[Callable[[Any], bool]] = None,
-) -> Iterable[T]:
+) -> Iterable[Any]:
     """Get the objects from packages
     package
         __init__.py
