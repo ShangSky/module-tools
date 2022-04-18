@@ -5,7 +5,7 @@ Tools for python modules
 ## Installation
 
 ```shell
-$ pip install flask-sugar
+$ pip install module-tools
 ```
 
 ## Examples
